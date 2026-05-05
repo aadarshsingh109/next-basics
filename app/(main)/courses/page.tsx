@@ -23,7 +23,7 @@ const Courses = async ({
         {courseTitles.map((t, i) => (
           <Link
             key={i}
-            href={`/courses?title=${t}`}
+            href={`/courses${activeTitle === t ? "" : `?title=${t}`}`}
             className={`px-4 py-2 border rounded-sm ${
               activeTitle === t ? "bg-black text-white" : "bg-white text-black"
             }`}

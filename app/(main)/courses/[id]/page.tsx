@@ -1,9 +1,15 @@
 import Image from "next/image";
+import Link from "next/link";
 import { courses } from "@/lib/courses";
+
+const waitThreeSeconds = () =>
+  new Promise((resolve) => setTimeout(resolve, 3000));
 
 async function CourseID({ params }: { params: Promise<{ id: number }> }) {
   const { id } = await params;
   const course = courses[id];
+  await waitThreeSeconds();
+  if (!course) throw new Error("Course not found");
 
   return (
     <div className="w-full min-h-screen bg-linear-to-br from-gray-100 to-gray-400 py-12 px-4 sm:px-6 lg:px-8">
@@ -31,9 +37,11 @@ async function CourseID({ params }: { params: Promise<{ id: number }> }) {
               <span className="text-gray-500 text-sm">One-time payment</span>
             </div>
 
-            <button className="w-full bg-black hover:bg-white hover:text-black hover:border text-white font-bold py-3 px-6 rounded-lg transition duration-200">
-              Enroll Now
-            </button>
+            <Link href={`/courses/${id}/success`} className="block">
+              <button className="w-full bg-black hover:bg-white hover:text-black hover:border text-white font-bold py-3 px-6 rounded-lg transition duration-200">
+                Enroll Now
+              </button>
+            </Link>
           </div>
         </div>
 
