@@ -28,7 +28,7 @@ export default function SuccessPage() {
           </h1>
 
           <p className="text-xl text-gray-600 mb-2">
-            You've successfully enrolled in this course!
+            You`ve successfully enrolled in this course!
           </p>
 
           <p className="text-gray-500 mb-8">
